@@ -4,3 +4,8 @@
 @tailwind utilities;
 
 /* custom style */
+
+/*  enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

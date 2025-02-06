@@ -1,6 +1,9 @@
 const Contact = () => {
   return (
-    <section className="py-16 px-6 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+    <section
+      id="contact"
+      className="py-16 px-6 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100"
+    >
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-heading text-primary-500">Contact Me</h2>
         <p className="mt-4 text-lg text-neutral-700 dark:text-neutral-300">Feel free to reach out to me for any collaboration or job opportunities!</p>
