@@ -1,5 +1,10 @@
-import { CheckCircleIcon } from "@heroicons/react/24/solid"; // Importing an icon
 import ThemeToggle from "./components/ThemeToggle"; // ✅ Import the toggle button
+import Hero from "./pages/Hero";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Projects from "./pages/Projects";
+import Resume from "./pages/Resume";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -8,11 +13,13 @@ function App() {
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
-
-      <h1 className="text-4xl font-heading text-primary-500">Heroicons Are Working!</h1>
-      <p className="text-lg text-neutral-600 dark:text-neutral-300">You successfully installed Heroicons.</p>
-      {/* Test Icon */}
-      <CheckCircleIcon className="w-12 h-12 text-success mt-4" />
+      {/* Content */}
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Resume />
+      <Contact />
     </div>
   );
 }
