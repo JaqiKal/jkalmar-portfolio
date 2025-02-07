@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-white/70 dark:bg-neutral-900/70 backdrop-blur-lg shadow-md py-4 px-6 z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo or Brand Name */}
-        <h1 className="text-primary-500 text-2xl font-bold">J. Kalmar</h1>
+        <h1 className="text-primary-500 text-2xl font-bold">Jacqueline Kalmár</h1>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
@@ -105,20 +106,25 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Hamburger Menu */}
-        <button
-          className="md:hidden focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <XMarkIcon className="h-8 w-8 text-neutral-900 dark:text-neutral-100" /> : <Bars3Icon className="h-8 w-8 text-neutral-900 dark:text-neutral-100" />}
-        </button>
+        <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          <button
+            className="md:hidden focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <XMarkIcon className="h-8 w-8 text-neutral-900 dark:text-neutral-100" /> : <Bars3Icon className="h-8 w-8 text-neutral-900 dark:text-neutral-100" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Component */}
-      <MobileMenu
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        handleScroll={handleScroll}
-      />
+      {isOpen && (
+        <MobileMenu
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          handleScroll={handleScroll}
+        />
+      )}
     </nav>
   );
 };

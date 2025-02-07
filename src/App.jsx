@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import ThemeToggle from "./components/ThemeToggle";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./pages/Hero";
 import About from "./pages/About";
@@ -10,14 +9,14 @@ import Resume from "./pages/Resume";
 
 const HomePage = () => {
   return (
-    <>
+    <div className="pt-16">
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
       <Resume />
-    </>
+    </div>
   );
 };
 
@@ -26,9 +25,6 @@ const App = () => {
     <Router>
       <div className="bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
         <Navbar />
-        <div className="absolute top-4 right-4">
-          <ThemeToggle />
-        </div>
         <Routes>
           <Route
             path="/"
