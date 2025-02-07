@@ -66,12 +66,6 @@ const Footer = () => {
           icons8
         </a>
       </p>
-      <img
-        width="64"
-        height="64"
-        src="https://img.icons8.com/arcade/64/portfolio.png"
-        alt="portfolio"
-      />
     </footer>
   );
 };
