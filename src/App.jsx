@@ -6,6 +6,7 @@ import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
+import Footer from "./components/Footer";
 
 const HomePage = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
           />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 };
