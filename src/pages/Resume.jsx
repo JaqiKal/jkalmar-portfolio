@@ -1,5 +1,6 @@
 // TODO: Add the english version of the CV and button to download it
 const Resume = () => {
+  const pdfPath = `${import.meta.env.BASE_URL}jacqueline-kalmar-cv.pdf`;
   return (
     <section
       id="resume"
@@ -9,15 +10,15 @@ const Resume = () => {
 
       {/* Embedded PDF Viewer */}
       <iframe
-        src="/jacqueline-kalmar-cv.pdf"
+        src={pdfPath}
         className="w-full max-w-3xl h-[500px] border border-neutral-300 dark:border-neutral-700"
       ></iframe>
 
       {/* Download Button */}
       <a
-        href="/jacqueline-kalmar-cv.pdf"
+        href={pdfPath}
         download="jacqueline-kalmar-cv.pdf"
-        className="mt-6 px-6 py-2 rounded-lg bg-primary-500 text-white text-lg font-semibold shadow-md hover:bg-primary-600 transition"
+        className="mt-6 px-6 py-2 rounded-lg bg-primary-700 text-white text-lg font-semibold shadow-md hover:bg-success transform hover:scale-105 transition"
       >
         Download CV
       </a>
