@@ -20,7 +20,12 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-white/70 dark:bg-neutral-900/70 backdrop-blur-lg shadow-md py-4 px-6 z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo or Brand Name */}
-        <h1 className="text-primary-500 text-2xl font-bold">Jacqueline Kalmár</h1>
+        <a
+          href="/"
+          className="text-primary-500 text-2xl font-bold"
+        >
+          Jacqueline Kalmár
+        </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
