@@ -22,7 +22,7 @@ const HomePage = () => {
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
         <Navbar />
         <Routes>
