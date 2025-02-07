@@ -1,11 +1,14 @@
 name: Manual Deploy to GitHub Pages
 
 on:
-  workflow_dispatch: # Allows manual deployment via GitHub Actions
+  workflow_dispatch: # ✅ Allows manual deployment via GitHub Actions
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # ✅ Allows pushing to gh-pages branch
 
     steps:
       - name: Checkout repository
