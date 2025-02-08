@@ -1,7 +1,23 @@
+/**
+ * MobileMenu.jsx - Mobile Navigation Component
+ *
+ * This component is responsible for rendering the mobile navigation menu when the hamburger icon is clicked.
+ * It is conditionally displayed based on the `isOpen` prop passed from `Navbar.jsx`.
+ *
+ * - Uses `framer-motion` for smooth animations when opening and closing the menu.
+ * - Receives `isOpen` to determine if the menu should be displayed.
+ * - Uses `useLocation` from `react-router-dom` to determine active navigation links.
+ * - Handles scrolling for internal links when on the homepage.
+ * - Uses TailwindCSS for styling with dark mode support.
+ *
+ * `Navbar.jsx` passes down the `navLinks` array, `handleScroll`, and `setIsOpen` to manage the state and behavior of the mobile menu.
+ */
+
+import PropTypes from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
-const MobileMenu = ({ isOpen, setIsOpen, handleScroll }) => {
+const MobileMenu = ({ isOpen, setIsOpen, handleScroll, navLinks }) => {
   const location = useLocation();
 
   return (
@@ -11,99 +27,51 @@ const MobileMenu = ({ isOpen, setIsOpen, handleScroll }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute top-16 left-0 w-full bg-white/70 dark:bg-neutral-900/70 backdrop-blur-lg shadow-lg rounded-b-lg p-6"
+          className="absolute top-16 left-0 w-full bg-white/95 dark:bg-neutral-900/95 backdrop-blur-lg shadow-lg rounded-b-lg p-6"
         >
           <div className="flex flex-col space-y-4 items-center">
-            {location.pathname === "/" ? (
-              <>
+            {navLinks.map((link) =>
+              location.pathname === "/" ? (
                 <a
-                  href="#hero"
-                  onClick={() => handleScroll("hero")}
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => {
+                    handleScroll(link.href.replace("#", ""));
+                    setIsOpen(false); // ✅ Close menu after clicking a link
+                  }}
+                  className="text-primary-800 dark:text-secondary-500 hover:text-tertiary-400 dark:hover:text-tertiary-400 transition hover:scale-110 lg:text-xl font-bold"
                 >
-                  Home
+                  {link.name}
                 </a>
-                <a
-                  href="#about"
-                  onClick={() => handleScroll("about")}
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  About
-                </a>
-                <a
-                  href="#skills"
-                  onClick={() => handleScroll("skills")}
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Skills
-                </a>
-                <a
-                  href="#projects"
-                  onClick={() => handleScroll("projects")}
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Projects
-                </a>
-                <a
-                  href="#contact"
-                  onClick={() => handleScroll("contact")}
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Contact
-                </a>
-                <a
-                  href="#resume"
-                  onClick={() => handleScroll("resume")}
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Resume
-                </a>
-              </>
-            ) : (
-              <>
+              ) : (
                 <Link
-                  to="/"
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setIsOpen(false)} // ✅ Close menu after clicking a link
+                  className="text-primary-800 dark:text-secondary-500 hover:text-tertiary-400 dark:hover:text-tertiary-400 transition hover:scale-110 lg:text-xl font-bold"
                 >
-                  Home
+                  {link.name}
                 </Link>
-                <Link
-                  to="/about"
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  About
-                </Link>
-                <Link
-                  to="/skills"
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Skills
-                </Link>
-                <Link
-                  to="/projects"
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Projects
-                </Link>
-                <Link
-                  to="/contact"
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Contact
-                </Link>
-                <Link
-                  to="/resume"
-                  className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-                >
-                  Resume
-                </Link>
-              </>
+              )
             )}
           </div>
         </motion.div>
       )}
     </AnimatePresence>
   );
+};
+
+MobileMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+  handleScroll: PropTypes.func.isRequired,
+  navLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      href: PropTypes.string,
+      to: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default MobileMenu;
