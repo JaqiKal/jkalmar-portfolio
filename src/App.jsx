@@ -7,7 +7,6 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import Footer from "./components/Footer";
-import { Lumiflex } from "uvcanvas";
 import { useEffect, useState } from "react";
 
 const HomePage = () => {
@@ -41,13 +40,7 @@ const App = () => {
   return (
     <Router basename="/jkalmar-portfolio">
       {/* Global Wrapper with Background */}
-      <div className="relative w-full min-h-screen">
-        {/* Lumiflex Background */}
-        <Lumiflex
-          className="absolute inset-0 -z-10"
-          color={isDark ? "#1F2937" : "#F3F4F6"}
-        />
-
+      <div className="relative w-full min-h-screen bg-neutral-300">
         {/* Page Content */}
         <Navbar />
         <Routes>
