@@ -16,9 +16,9 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-700"
+      className="p-2 rounded-lg bg-primary-900/20 dark:bg-secondary-100/20 transition hover:bg-primary-900/10 dark:hover:bg-secondary-100/10"
     >
-      {theme === "light" ? <MoonIcon className="h-6 w-6 text-neutral-900" /> : <SunIcon className="h-6 w-6 text-neutral-100" />}
+      {theme === "light" ? <MoonIcon className="h-6 w-6 text-secondary-50" /> : <SunIcon className="h-6 w-6 text-warning" />}
     </button>
   );
 };
