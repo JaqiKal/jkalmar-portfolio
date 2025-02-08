@@ -17,7 +17,7 @@ const Hero = () => {
         {/* Buttons Section */}
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           <a href="#projects">
-            <button className="px-6 py-3 rounded-lg bg-primary-500 text-white text-lg font-semibold shadow-md hover:bg-primary-700 transition hover:scale-105">View My Work</button>
+            <button className="px-6 py-3 rounded-lg bg-primary-700 text-white text-lg font-semibold shadow-md hover:bg-primary-500  hover:dark:bg-primary-400 transition hover:scale-105">View My Work</button>
           </a>
           <a href="#resume">
             <button className="px-6 py-3 rounded-lg bg-secondary-500 text-white text-lg font-semibold shadow-md hover:bg-secondary-700 transition hover:scale-105">View Resume</button>
