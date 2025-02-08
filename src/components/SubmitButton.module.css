@@ -1,0 +1,79 @@
+/* Button design inspired and amended from: https://codepen.io/astitva2009/pen/ExQeNxb */
+
+/* Rainbow border animation */
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Button styling */
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  color: #f5f5f5;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #c42d0b;
+  /* customPurpleDark */
+  border: none;
+  border-radius: 9999px;
+  /* Fully rounded */
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25), 0px 6px 10px rgb(196, 45, 11, 0.3), inset 4px 4px 16px rgba(253, 192, 107, 0.466), inset -6px -6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Hover transform */
+.button:hover {
+  background: #1e40af;
+  /* Darker Tailwind Blue */
+  transform: scale(1.05);
+}
+
+/* Rainbow effect */
+.button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #450a0a, #9a3412, #d97706, #c2410c, #c42d0b);
+  background-size: 400%;
+  z-index: -1;
+  border-radius: 9999px;
+  animation: rainbow 5s linear infinite;
+}
+
+/* Blur effect */
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #b45309, #d97706, #c2410c, #c42d0b);
+  background-size: 400%;
+  z-index: -2;
+  filter: blur(10px);
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.button:hover::after {
+  opacity: 1;
+}
