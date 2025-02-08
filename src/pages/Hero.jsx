@@ -1,14 +1,40 @@
+import heroImage from "../assets/images/heroImage.webp";
+
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col items-center justify-center text-center bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 px-6"
+      className="relative min-h-[60vh] md:min-h-screen flex flex-col md:flex-row items-stretch w-full"
     >
-      <h1 className="text-5xl font-heading text-primary-500">Hi, I&apos;m Jacqueline Kalmár</h1>
-      <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">Logistician & transport leader and Junior full stack sw developer</p>
-      <div className="mt-6 flex flex-col sm:flex-row gap-4">
-        <button className="px-6 py-2 rounded-lg bg-primary-700 text-white text-lg font-semibold shadow-md hover:bg-success transform hover:scale-105 transition">View My Work</button>
-        <button className="px-6 py-2 rounded-lg bg-primary-700 text-white text-lg font-semibold shadow-md hover:bg-success transform hover:scale-105 transition">View Resume</button>
+      {/* Centered Content on Top */}
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+        <h1 className="text-4xl md:text-6xl font-bold text-primary-800 dark:text-secondary-500">Hi, I&apos;m Jacqueline Kalmár</h1>
+        <p className="my-10 text-xl text-neutral-900 dark:text-secondary-500">
+          <span className="block">Logistician & Transport Leader</span>
+          <span className="block">Junior Fullstack Developer</span>
+        </p>
+
+        {/* Buttons Section */}
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+          <a href="#projects">
+            <button className="px-6 py-3 rounded-lg bg-primary-500 text-white text-lg font-semibold shadow-md hover:bg-primary-700 transition hover:scale-105">View My Work</button>
+          </a>
+          <a href="#resume">
+            <button className="px-6 py-3 rounded-lg bg-secondary-500 text-white text-lg font-semibold shadow-md hover:bg-secondary-700 transition hover:scale-105">View Resume</button>
+          </a>
+        </div>
+      </div>
+
+      {/* Left Column: Gradient Background - Hidden on Small Screens */}
+      <div className="hidden md:block md:w-1/2 h-screen bg-gradient-to-b from-neutral-300 to-primary-900 dark:from-primary-900 dark:to-neutral-800"></div>
+
+      {/* Right Column: Hero Image */}
+      <div className="w-full md:w-1/2 h-[60vh] md:h-screen">
+        <img
+          src={heroImage} // TODO: Replace with real image later
+          alt="A silvery ocean merging seamlessly with a pale sky beyond the horizon."
+          className="w-full h-full object-cover"
+        />
       </div>
     </section>
   );
