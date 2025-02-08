@@ -13,26 +13,40 @@ export default {
       },
       colors: {
         primary: {
+          50:  "#f3e6f3",
           100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#3B82F6", // Base Blue
-          600: "#2563EB",
-          700: "#1D4ED8",
-          800: "#1E40AF",
-          900: "#1E3A8A",
+          200: "#d09bd0",
+          300: "#b868b8",
+          400: "#a136a1",
+          500: "#890489",// Base Blue
+          600: "#6e036e",
+          700: "#520252",
+          800: "#370237",
+          900: "#1b011b",
         },
         secondary: {
-          100: "#FEE2E2",
-          200: "#FECACA",
-          300: "#FCA5A5",
-          400: "#F87171",
-          500: "#EF4444", // Base Red
-          600: "#DC2626",
-          700: "#B91C1C",
-          800: "#991B1B",
-          900: "#7F1D1D",
+          50:  "#e6f9f9",
+          100: "#b8f0f0",
+          200: "#8ae7e7",
+          300: "#5cdddd",
+          400: "#0bafaf", // Teal Base
+          500: "#099494",
+          600: "#077878",
+          700: "#055c5c",
+          800: "#033f3f",
+          900: "#021f1f"
+        },
+        tertiary: {
+          50:  "#f9e8e0",
+          100: "#f3d1b8",
+          200: "#ecb98a",
+          300: "#e5a05c",
+          400: "#d35400", // Deep Orange Base
+          500: "#b14600",
+          600: "#8a3900",
+          700: "#622b00",
+          800: "#3a1d00",
+          900: "#1b0e00"
         },
         success: "#10B981",
         warning: "#F59E0B",
@@ -50,6 +64,12 @@ export default {
           900: "#111827",
         },
       },
+      background: {
+        'gradient-primary': "linear-gradient(135deg, #890489 30%, #6e036e 100%)",
+        'gradient-secondary': "linear-gradient(135deg, #0bafaf 30%, #077878 100%)",
+        'gradient-tertiary': "linear-gradient(135deg, #d35400 30%, #8a3900 100%)",
+      },
+
     },
   },
   plugins: [],
