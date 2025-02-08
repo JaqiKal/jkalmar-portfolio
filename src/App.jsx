@@ -23,7 +23,7 @@ const HomePage = () => {
 
 const App = () => {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router basename="/jkalmar-portfolio">
       <div className="bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
         <Navbar />
         <Routes>

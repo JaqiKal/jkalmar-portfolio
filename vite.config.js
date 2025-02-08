@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   plugins: [react()],
-  base:  mode === "production" ? "/jkalmar-portfolio/" : "/", // Use `/` in dev mode
-}));
+  base: "/jkalmar-portfolio/", // ✅ Explicitly set for GitHub Pages
+});
