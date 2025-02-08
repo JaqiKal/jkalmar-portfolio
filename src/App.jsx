@@ -7,6 +7,8 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import Footer from "./components/Footer";
+import { Lumiflex } from "uvcanvas";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
   return (
@@ -22,9 +24,31 @@ const HomePage = () => {
 };
 
 const App = () => {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check if dark mode is active
+    const checkDarkMode = () => setIsDark(document.documentElement.classList.contains("dark"));
+
+    checkDarkMode();
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", checkDarkMode);
+
+    return () => {
+      window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", checkDarkMode);
+    };
+  }, []);
+
   return (
     <Router basename="/jkalmar-portfolio">
-      <div className="bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+      {/* Global Wrapper with Background */}
+      <div className="relative w-full min-h-screen">
+        {/* Lumiflex Background */}
+        <Lumiflex
+          className="absolute inset-0 -z-10"
+          color={isDark ? "#1F2937" : "#F3F4F6"}
+        />
+
+        {/* Page Content */}
         <Navbar />
         <Routes>
           <Route
