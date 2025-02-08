@@ -1,3 +1,16 @@
+/**
+ * Navbar.jsx - Main Navigation Component
+ *
+ * This component is responsible for rendering the main navigation bar, including both
+ * the desktop and mobile versions. It handles theme toggling and dynamic navigation.
+ *
+ * - Uses `useState` to manage the mobile menu state (`isOpen`)
+ * - Uses `useLocation` from `react-router-dom` to determine active navigation links
+ * - Passes navigation links (`navLinks`) to `MobileMenu.jsx` for mobile rendering
+ *
+ * MobileMenu.jsx is a separate component that is conditionally rendered when `isOpen` is true.
+ * It receives `navLinks`, `setIsOpen`, and `handleScroll` to manage navigation on smaller screens.
+ */
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -8,126 +21,78 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  // Function to handle smooth scrolling to sections
   const handleScroll = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false); // Close menu after clickin
+      setIsOpen(false); // Close mobile menu after clicking a link
     }
   };
 
+  // Define navigation links for both desktop and mobile
+  const navLinks = [
+    { name: "Home", href: "#hero", to: "/" },
+    { name: "About", href: "#about", to: "/about" },
+    { name: "Skills", href: "#skills", to: "/skills" },
+    { name: "Projects", href: "#projects", to: "/projects" },
+    { name: "Contact", href: "#contact", to: "/contact" },
+    { name: "Resume", href: "#resume", to: "/resume" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/70 dark:bg-neutral-900/70 backdrop-blur-lg shadow-md py-4 px-6 z-50">
+    <nav className="fixed top-0 left-0 w-full bg-neutral-300 dark:bg-primary-900/90 backdrop-blur-lg shadow-md py-4 px-6 z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo or Brand Name */}
         <a
           href="/"
-          className="text-primary-500 text-2xl font-bold"
+          className="text-primary-800  dark:hover:text-tertiary-400 hover:text-tertiary-400 dark:text-secondary-500 transition hover:scale-110 lg:text-2xl font-bold"
         >
           Jacqueline Kalmár
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Visible on medium and larger screens */}
         <div className="hidden md:flex space-x-6">
-          {location.pathname === "/" ? (
-            <>
+          {navLinks.map((link) =>
+            location.pathname === "/" ? (
               <a
-                href="#hero"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
+                key={link.href}
+                href={link.href}
+                className="text-primary-800 dark:text-secondary-500 hover:text-tertiary-400 dark:hover:text-tertiary-400 transition hover:scale-110 lg:text-xl font-bold"
               >
-                Home
+                {link.name}
               </a>
-              <a
-                href="#about"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                About
-              </a>
-              <a
-                href="#skills"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Skills
-              </a>
-              <a
-                href="#projects"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Projects
-              </a>
-              <a
-                href="#contact"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Contact
-              </a>
-              <a
-                href="#resume"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Resume
-              </a>
-            </>
-          ) : (
-            <>
+            ) : (
               <Link
-                to="/"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
+                key={link.to}
+                to={link.to}
+                className="text-primary-800 dark:text-secondary-400 hover:text-tertiary-400 dark:hover:text-tertiary-400 transition hover:scale-110 lg:text-xl font-bold"
               >
-                Home
+                {link.name}
               </Link>
-              <Link
-                to="/about"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                About
-              </Link>
-              <Link
-                to="/skills"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Skills
-              </Link>
-              <Link
-                to="/projects"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Projects
-              </Link>
-              <Link
-                to="/contact"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Contact
-              </Link>
-              <Link
-                to="/resume"
-                className="text-neutral-900 dark:text-neutral-100 hover:text-primary-500"
-              >
-                Resume
-              </Link>
-            </>
+            )
           )}
         </div>
 
-        {/* Mobile Hamburger Menu */}
+        {/* Mobile Menu Button (Hamburger Icon) - Visible on small screens */}
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           <button
             className="md:hidden focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <XMarkIcon className="h-8 w-8 text-neutral-900 dark:text-neutral-100" /> : <Bars3Icon className="h-8 w-8 text-neutral-900 dark:text-neutral-100" />}
+            {isOpen ? <XMarkIcon className="h-8 w-8 text-primary-800 dark:text-secondary-400" /> : <Bars3Icon className="h-8 w-8 text-primary-800 dark:text-secondary-400" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Component */}
+      {/* Mobile Menu Component - Renders only when isOpen is true */}
       {isOpen && (
         <MobileMenu
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           handleScroll={handleScroll}
+          navLinks={navLinks} // Pass navigation links to MobileMenu
         />
       )}
     </nav>
