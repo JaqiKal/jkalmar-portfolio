@@ -24,8 +24,10 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/" || location.pathname === "/jkalmar-portfolio/";
 
-  // Function to handle smooth scrolling to sections
-  const handleScroll = (id) => {
+  // Function to handle smooth scrolling
+  const handleScroll = (e, id) => {
+    e.preventDefault();
+
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -35,12 +37,12 @@ const Navbar = () => {
 
   // Define navigation links for both desktop and mobile
   const navLinks = [
-    { name: "Home", href: "#hero", to: "/jkalmar-portfolio/" },
-    { name: "About", href: "#about", to: "/about" },
-    { name: "Skills", href: "#skills", to: "/skills" },
-    { name: "Projects", href: "#projects", to: "/projects" },
-    { name: "Contact", href: "#contact", to: "/contact" },
-    { name: "Resume", href: "#resume", to: "/resume" },
+    { name: "Home", href: "hero", to: "/" },
+    { name: "About", href: "about", to: "/about" },
+    { name: "Skills", href: "skills", to: "/skills" },
+    { name: "Projects", href: "projects", to: "/projects" },
+    { name: "Contact", href: "contact", to: "/contact" },
+    { name: "Resume", href: "resume", to: "/resume" },
   ];
 
   return (
@@ -52,7 +54,7 @@ const Navbar = () => {
             href="#hero"
             onClick={(e) => {
               e.preventDefault();
-              handleScroll("hero"); // Call smooth scroll function
+              handleScroll(e, "hero"); // Call smooth scroll function
             }}
             className="text-primary-800  dark:hover:text-tertiary-400 hover:text-tertiary-400 dark:text-secondary-500 transition hover:scale-110 lg:text-2xl font-bold"
           >
@@ -60,24 +62,21 @@ const Navbar = () => {
           </a>
         ) : (
           <Link
-            to="/jkalmar-portfolio/"
+            to="/"
             className="text-primary-800 dark:text-secondary-500 hover:text-tertiary-400 dark:hover:text-tertiary-400 transition hover:scale-110 lg:text-2xl font-bold"
           >
             Jacqueline Kalmár
           </Link>
         )}
 
-        {/* Desktop Navigation - Visible on medium and larger screens */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
           {navLinks.map((link) =>
             isHome ? (
               <a
                 key={link.href}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault;
-                  handleScroll(link.href.substring(1)); // Call smooth scroll function
-                }}
+                href={`#${link.href}`}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="text-primary-800 dark:text-secondary-500 hover:text-tertiary-400 dark:hover:text-tertiary-400 transition hover:scale-110 lg:text-xl font-bold"
               >
                 {link.name}
@@ -94,7 +93,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Button (Hamburger Icon) - Visible on small screens */}
+        {/* Mobile Menu Button (Hamburger Icon) */}
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           <button
@@ -112,7 +111,7 @@ const Navbar = () => {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           handleScroll={handleScroll}
-          navLinks={navLinks} // Pass navigation links to MobileMenu
+          navLinks={navLinks}
         />
       )}
     </nav>

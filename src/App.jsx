@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Hero from "./pages/Hero";
 import About from "./pages/About";
@@ -33,7 +33,7 @@ const App = () => {
         <main className="flex-1 pt-16">
           <Routes>
             <Route
-              path="/jkalmar-portfolio"
+              path="/"
               element={<HomePage />}
             />
             <Route
