@@ -4,7 +4,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-16 px-6 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100"
+      className="py-20 px-6  text-neutral-900 dark:text-neutral-100"
     >
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-heading text-primary-500">My Skills</h2>

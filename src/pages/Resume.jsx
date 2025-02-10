@@ -4,7 +4,7 @@ const Resume = () => {
   return (
     <section
       id="resume"
-      className="min-h-screen flex flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 px-6"
+      className="py-20 px-6 flex flex-col items-center justify-center  text-neutral-900 dark:text-neutral-100"
     >
       <h2 className="text-4xl font-heading text-primary-500 mb-6">My Resume</h2>
 
