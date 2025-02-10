@@ -7,11 +7,10 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
 
 const HomePage = () => {
   return (
-    <div className="pt-16">
+    <div>
       <Hero />
       <About />
       <Skills />
@@ -23,54 +22,46 @@ const HomePage = () => {
 };
 
 const App = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check if dark mode is active
-    const checkDarkMode = () => setIsDark(document.documentElement.classList.contains("dark"));
-
-    checkDarkMode();
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", checkDarkMode);
-
-    return () => {
-      window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", checkDarkMode);
-    };
-  }, []);
-
   return (
     <Router basename="/jkalmar-portfolio">
       {/* Global Wrapper with Background */}
-      <div className="relative w-full min-h-screen bg-neutral-300">
-        {/* Page Content */}
+      <div className="flex flex-col min-h-screen bg-neutral-100 dark:bg-neutral-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        {/* Navbar at the top */}
         <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={<HomePage />}
-          />
-          <Route
-            path="/about"
-            element={<About />}
-          />
-          <Route
-            path="/skills"
-            element={<Skills />}
-          />
-          <Route
-            path="/projects"
-            element={<Projects />}
-          />
-          <Route
-            path="/contact"
-            element={<Contact />}
-          />
-          <Route
-            path="/resume"
-            element={<Resume />}
-          />
-        </Routes>
+
+        {/* Page Content */}
+        <main className="flex-1 pt-16">
+          <Routes>
+            <Route
+              path="/"
+              element={<HomePage />}
+            />
+            <Route
+              path="/about"
+              element={<About />}
+            />
+            <Route
+              path="/skills"
+              element={<Skills />}
+            />
+            <Route
+              path="/projects"
+              element={<Projects />}
+            />
+            <Route
+              path="/contact"
+              element={<Contact />}
+            />
+            <Route
+              path="/resume"
+              element={<Resume />}
+            />
+          </Routes>
+        </main>
+
+        {/* Footer at the bottom */}
+        <Footer />
       </div>
-      <Footer />
     </Router>
   );
 };
