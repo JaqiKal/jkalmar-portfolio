@@ -1,6 +1,6 @@
 // TODO: Add the english version of the CV and button to download it
 const Resume = () => {
-  const pdfPath = `${import.meta.env.BASE_URL}jacqueline-kalmar-cv.pdf`;
+  const pdfPath = `${import.meta.env.BASE_URL}assets/documents/jacqueline-kalmar-cv.pdf`;
   return (
     <section
       id="resume"
