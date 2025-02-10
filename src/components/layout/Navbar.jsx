@@ -15,7 +15,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MobileMenu from "./MobileMenu";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../ui/ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
