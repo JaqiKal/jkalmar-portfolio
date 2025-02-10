@@ -23,7 +23,7 @@ const HomePage = () => {
 
 const App = () => {
   return (
-    <Router basename="/jkalmar-portfolio">
+    <Router basename={import.meta.env.MODE === "development" ? "/" : "/jkalmar-portfolio"}>
       {/* Global Wrapper with Background */}
       <div className="flex flex-col min-h-screen bg-neutral-100 dark:bg-neutral-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
         {/* Navbar at the top */}
@@ -33,7 +33,7 @@ const App = () => {
         <main className="flex-1 pt-16">
           <Routes>
             <Route
-              path="/"
+              path="/jkalmar-portfolio"
               element={<HomePage />}
             />
             <Route
