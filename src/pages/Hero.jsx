@@ -1,4 +1,5 @@
 import heroImage from "../assets/images/heroImage.webp";
+import jaqiTini from "../assets/images/jaqiTini.webp";
 
 const Hero = () => {
   return (
@@ -7,8 +8,15 @@ const Hero = () => {
       className="relative min-h-[60vh] md:min-h-screen flex flex-col md:flex-row items-stretch w-full"
     >
       {/* Centered Content on Top */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-        <h1 className="text-4xl md:text-6xl font-bold text-primary-800 dark:text-secondary-500">Hi, I&apos;m Jacqueline Kalmár</h1>
+      <div className="absolute inset-0 flex flex-col justify-start items-center text-center px-6 mt-20">
+        <div className="mb-10">
+          <img
+            src={jaqiTini}
+            alt="Profile image"
+            className="w-56 h-56 rounded-full object-cover border-1 border-white shadow-lg"
+          />
+        </div>
+        <h1 className="text-4xl md:text-6xl font-bold text-primary-800  dark:text-secondary-500">Hi, I&apos;m Jacqueline Kalmár</h1>
         <p className="my-10 text-xl text-neutral-900 dark:text-secondary-500">
           <span className="block">Logistician & Transport Leader</span>
           <span className="block">Junior Fullstack Developer</span>
@@ -26,7 +34,7 @@ const Hero = () => {
       </div>
 
       {/* Left Column: Gradient Background - Hidden on Small Screens */}
-      <div className="hidden md:block md:w-1/2 h-screen bg-gradient-to-b from-neutral-300 to-primary-900 dark:from-primary-900 dark:to-neutral-800"></div>
+      <div className=" hidden md:block md:w-1/2 h-screen bg-gradient-to-b from-neutral-300 to-primary-900 dark:from-primary-900 dark:to-neutral-800"></div>
 
       {/* Right Column: Hero Image */}
       <div className="w-full md:w-1/2 h-[60vh] md:h-screen">
